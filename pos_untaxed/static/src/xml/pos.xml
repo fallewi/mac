@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-extend="PaymentScreen-Numpad">
+        <t t-jquery="button.mode-button[data-action='+10']" t-operation="replace">
+            <button class="mode-button" data-action='+5'>+5</button>
+        </t>
+        <t t-jquery="button.mode-button[data-action='+20']" t-operation="replace">
+            <button class="mode-button" data-action='+10'>+10</button>
+        </t>
+        <t t-jquery="button.mode-button[data-action='+50']" t-operation="replace">
+            <button class="mode-button" data-action='+20'>+20</button>
+        </t>
+    </t>
+
+    <t t-extend="PaymentScreen-Paymentlines">
+        <t t-jquery="div.paymentlines-empty" t-operation="replace">
+            <div class='paymentlines-empty'>
+                <span class='total'>
+                    <t t-esc="widget.format_currency(order.get_untaxed_subtotal())"/>
+                </span>
+                <span class='message'>
+                    non-taxable
+                </span>
+            </div>
+            <div class='paymentlines-empty'>
+                <span class='total'>
+                    <t t-esc="widget.format_currency(order.get_taxed_subtotal())"/>
+                </span>
+                <span class='message'>
+                    taxable
+                </span>
+            </div>
+        </t>
+    </t>
+
+</templates>
