@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_create_lot" model="ir.ui.view">
+        <field name="name">ingredient_label.create.lot.view.form</field>
+        <field name="model">ingredient_label.create.lot</field>
+        <field name="arch" type="xml">
+            <form string="Create Lot">
+                <group>
+                    <p>Create new lots for selected product. You can print their labels immediately.
+                    </p>
+                </group>
+                <group>
+                    <field name="product_id"/>
+                    <label for="product_uom_qty"/>
+                    <div class="o_row">
+                        <span><field name="product_uom_qty" nolabel="1"/></span>
+                        <span><field name="product_uom_id" readonly="1" nolabel="1"/></span>
+                    </div>
+                    <field name="lot_qty"/>
+                    <field name="print_label"/>
+                    <field name="printer_id" attrs="{'invisible': [('print_label', '=', False)]}"/>
+                    <field name="label_id" attrs="{'invisible': [('print_label', '=', False)]}"/>
+                </group>
+                <footer>
+                    <button name="process" string="_Apply" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_view_create_lot" model="ir.actions.act_window">
+        <field name="name">Create Lot</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">ingredient_label.create.lot</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_create_lot"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="product_normal_form_view" model="ir.ui.view">
+        <field name="name">product.product.form</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <page name="notes" position="inside">
+                <group name="ingredients">
+                    <group string="Ingredients">
+                        <field name="ingredients" nolabel="1" placeholder="List of ingredients."/>
+                    </group>
+                </group>
+            </page>
+            <group name="expiry_and_lots" position="inside">
+                <label for="use_variant_time"/>
+                <div>
+                    <field name="use_variant_time" class="oe_inline"/>
+                    <span>days</span>
+                </div>
+                <label for="life_variant_time"/>
+                <div>
+                    <field name="life_variant_time" class="oe_inline"/>
+                    <span>days</span>
+                </div>
+                <label for="removal_variant_time"/>
+                <div>
+                    <field name="removal_variant_time" class="oe_inline"/>
+                    <span>days</span>
+                </div>
+                <label for="alert_variant_time"/>
+                <div>
+                    <field name="alert_variant_time" class="oe_inline"/>
+                    <span>days</span>
+                </div>
+            </group>
+        </field>
+    </record>
+
+</odoo>
