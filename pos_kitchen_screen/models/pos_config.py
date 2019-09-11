@@ -12,6 +12,6 @@ class PosConfig(models.Model):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_url',
-            'url':   '/pos/web/',
+            'url':   '/kitchen/orders/%d' % self.id,
             'target': 'self',
         }

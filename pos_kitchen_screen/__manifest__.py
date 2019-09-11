@@ -15,6 +15,8 @@
     'data': [
         'templates/assets.xml',
         'templates/kitchen_screen.xml',
+        'views/pos_config.xml',
+        'views/pos_order.xml',
     ],
     'qweb': [
     ],
