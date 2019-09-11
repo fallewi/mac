@@ -8,7 +8,7 @@
                 <t t-call-assets="web.assets_common" t-css="false"/>
                 <t t-call-assets="web.assets_frontend" t-css="false"/>
             </t>
-            <div class="o_pos_kitchen_screen">
+            <div class="o_pos_kitchen_screen" t-att-data-session_id="session_id">
             </div>
         </t>
     </template>

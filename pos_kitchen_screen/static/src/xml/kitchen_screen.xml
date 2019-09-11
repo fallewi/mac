@@ -1,36 +1,45 @@
 <templates id="template" xml:space="preserve">
     <t t-name="pos_kitchen_screen.screen">
-        <div class="col-lg-3 col-sm-4 col-xs-6">
-            <div class="panel panel-default ">
-                <div class="panel-heading">Panel heading without title</div>
-                <div class="panel-body">
-                    Panel content
+        <div class="col-xs-4">
+            <h3>Confirmed</h3>
+            <t t-foreach="confirmed" t-as="order">
+                <div class="panel panel-success">
+                    <div class="panel-heading"><t t-esc="order.name"/></div>
+                    <div class="panel-body">
+                        <ul t-foreach="order.lines" t-as="line">
+                            <li><t t-esc="line.qty"/> x <t t-esc="line.product_name"/></li>
+                        </ul>
+                        <button class="btn btn-primary pull-right js-next-step" t-att-data-order_id="order.id">In Progress</button>
+                    </div>
                 </div>
-            </div>
+            </t>
         </div>
-        <div class="col-lg-3 col-sm-4 col-xs-6">
-            <div class="panel panel-default ">
-                <div class="panel-heading">Panel heading without title</div>
-                <div class="panel-body">
-                    Panel content
+        <div class="col-xs-4">
+            <h3>In Progress</h3>
+            <t t-foreach="in_progress" t-as="order">
+                <div class="panel panel-info">
+                    <div class="panel-heading"><t t-esc="order.name"/></div>
+                    <div class="panel-body">
+                        <ul t-foreach="order.lines" t-as="line">
+                            <li><t t-esc="line.qty"/> x <t t-esc="line.product_name"/></li>
+                        </ul>
+                        <button class="btn btn-primary pull-right js-next-step" t-att-data-order_id="order.id">Done</button>
+                    </div>
                 </div>
-            </div>
+            </t>
         </div>
-        <div class="col-lg-3 col-sm-4 col-xs-6">
-            <div class="panel panel-default ">
-                <div class="panel-heading">Panel heading without title</div>
-                <div class="panel-body">
-                    Panel content
+        <div class="col-xs-4">
+            <h3>Done</h3>
+            <t t-foreach="done" t-as="order">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><t t-esc="order.name"/></div>
+                    <div class="panel-body">
+                        <ul t-foreach="order.lines" t-as="line">
+                            <li><t t-esc="line.qty"/> x <t t-esc="line.product_name"/></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-4 col-xs-6">
-            <div class="panel panel-default ">
-                <div class="panel-heading">Panel heading without title</div>
-                <div class="panel-body">
-                    Panel content
-                </div>
-            </div>
+            </t>
         </div>
     </t>
 </templates>
