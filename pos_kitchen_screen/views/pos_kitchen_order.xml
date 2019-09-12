@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_kitchen_order_form" model="ir.ui.view">
+        <field name="name">pos.kitchen.order.form</field>
+        <field name="model">pos.kitchen.order</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="session_id"/>
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Lines">
+                            <field name="line_ids">
+                                <field name="name"/>
+                                <field name="qty"/>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="pos_kitchen_order_tree" model="ir.ui.view">
+        <field name="name">pos.kitchen.order.tree</field>
+        <field name="model">pos.kitchen.order</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="session_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_pos_kitchen_order" model="ir.actions.act_window">
+        <field name="name">Kitchen Orders</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pos.kitchen.order</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+    
+    <menuitem id="menu_kitchen_orders" name="Kitchen Orders" parent="point_of_sale.menu_point_of_sale"
+              action="action_pos_kitchen_order" sequence="100"/>
+</odoo>

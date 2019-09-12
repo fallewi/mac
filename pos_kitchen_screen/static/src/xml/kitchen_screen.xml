@@ -7,7 +7,7 @@
                     <div class="panel-heading"><t t-esc="order.name"/></div>
                     <div class="panel-body">
                         <ul t-foreach="order.lines" t-as="line">
-                            <li><t t-esc="line.qty"/> x <t t-esc="line.product_name"/></li>
+                            <li><t t-esc="line.qty"/> | <t t-esc="line.name"/></li>
                         </ul>
                         <button class="btn btn-primary pull-right js-next-step" t-att-data-order_id="order.id">In Progress</button>
                     </div>
@@ -21,7 +21,7 @@
                     <div class="panel-heading"><t t-esc="order.name"/></div>
                     <div class="panel-body">
                         <ul t-foreach="order.lines" t-as="line">
-                            <li><t t-esc="line.qty"/> x <t t-esc="line.product_name"/></li>
+                            <li><t t-esc="line.qty"/> | <t t-esc="line.name"/></li>
                         </ul>
                         <button class="btn btn-primary pull-right js-next-step" t-att-data-order_id="order.id">Done</button>
                     </div>
@@ -35,7 +35,7 @@
                     <div class="panel-heading"><t t-esc="order.name"/></div>
                     <div class="panel-body">
                         <ul t-foreach="order.lines" t-as="line">
-                            <li><t t-esc="line.qty"/> x <t t-esc="line.product_name"/></li>
+                            <li><t t-esc="line.qty"/> | <t t-esc="line.name"/></li>
                         </ul>
                     </div>
                 </div>

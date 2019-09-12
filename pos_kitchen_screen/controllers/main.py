@@ -13,21 +13,20 @@ class KitchenScreen(http.Controller):
         confirmed = []
         in_progress = []
         done = []
-        for order in request.env['pos.order'].search([
+        for order in request.env['pos.kitchen.order'].search([
             ('session_id', '=', session_id),
-            ('order_state', '!=', 'draft'),
         ]):
             order_dict = {
                 'id': order.id,
                 'name': order.name,
                 'lines': [{
-                    'product_name': line.product_id.name,
+                    'name': line.name,
                     'qty': line.qty,
-                } for line in order.lines],
+                } for line in order.line_ids],
             }
-            if order.order_state == 'confirmed':
+            if order.state == 'confirmed':
                 confirmed.append(order_dict)
-            elif order.order_state == 'in_progress':
+            elif order.state == 'in_progress':
                 in_progress.append(order_dict)
             else:
                 done.append(order_dict)
@@ -40,11 +39,11 @@ class KitchenScreen(http.Controller):
     @http.route('/kitchen/order_next_step/<int:order_id>', auth='user', type='json')
     def order_next_step(self, order_id):
         request = http.request
-        order = request.env['pos.order'].browse(int(order_id));
+        order = request.env['pos.kitchen.order'].browse(int(order_id));
         if not order:
             return {'success': False, 'data': {'error': _('Could not')}}
-        if order.order_state == 'confirmed':
-            order.order_state = 'in_progress'
-        elif order.order_state == 'in_progress':
-            order.order_state = 'done'
+        if order.state == 'confirmed':
+            order.state = 'in_progress'
+        elif order.state == 'in_progress':
+            order.state = 'done'
         return {'success': True, 'data': {}}

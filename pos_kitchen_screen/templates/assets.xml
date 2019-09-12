@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="assets_frontend" inherit_id="web.assets_frontend" name="Sale frontend assets">
+    <template id="assets_frontend" inherit_id="web.assets_frontend">
         <xpath expr="." position="inside">
             <link rel="stylesheet" href="/pos_kitchen_screen/static/src/css/kitchen_screen.css" type="text/css"/>
             <script type="text/javascript" src="/pos_kitchen_screen/static/src/js/kitchen_screen.js"></script>
+        </xpath>
+    </template>
+
+    <template id="pos_assets" inherit_id="point_of_sale.assets">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/pos_kitchen_screen/static/src/js/pos_send_orders_button.js"></script>
         </xpath>
     </template>
 </odoo>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="pos_kitchen_screen.send_order_to_kitchen">
+        <span class="control-button order-to-kitchen">
+            <i class="fa fa-cutlery"></i>
+            Send to Kitchen
+        </span>
+    </t>
+</templates>
+
