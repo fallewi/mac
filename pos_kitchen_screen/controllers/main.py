@@ -20,7 +20,7 @@ class KitchenScreen(http.Controller):
                 'id': order.id,
                 'name': order.name,
                 'lines': [{
-                    'name': line.name,
+                    'name': line.product_id.name,
                     'qty': line.qty,
                 } for line in order.line_ids],
             }
@@ -47,3 +47,19 @@ class KitchenScreen(http.Controller):
         elif order.state == 'in_progress':
             order.state = 'done'
         return {'success': True, 'data': {}}
+
+    @http.route('/kitchen/new_order', auth='user', type='json')
+    def new_order(self, **kwargs):
+        request = http.request
+        if kwargs.get('new'):
+            order_lines = [(0, 0, {
+                'product_id': line['id'],
+                'qty': line['qty'],
+            }) for line in kwargs['new']]
+            request.env['pos.kitchen.order'].create({
+                'name': kwargs['name'],
+                'session_id': kwargs['session_id'],
+                'state': 'confirmed',
+                'line_ids': order_lines,
+            })
+        return {'success': True}

@@ -28,7 +28,8 @@ class POSKitchenOrder(models.Model):
 class POSKitchenOrderLine(models.Model):
     _name = 'pos.kitchen.order.line'
     _description = 'Kitchen Order'
+    _rec_name = 'product_id'
 
-    name = fields.Char('Product Name')
+    product_id = fields.Many2one('product.product')
     order_id = fields.Many2one('pos.kitchen.order', 'Kitchen Order')
     qty = fields.Float('Quantity', digits=dp.get_precision('Product Unit of Measure'))
