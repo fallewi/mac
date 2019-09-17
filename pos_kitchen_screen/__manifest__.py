@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Point of Sale - Kitchen Display',
-    'category': 'Display POS orders in the kitchen',
-    'summary': '',
+    'category': 'Point of Sale',
+    'summary': 'Display POS orders in the kitchen',
     'website': 'https://www.microcom.ca/',
     'version': '11.0',
     'description': """
@@ -10,7 +10,7 @@
     """,
     'author': 'Microcom',
     'depends': [
-        'point_of_sale',
+        'pos_restaurant',
     ],
     'data': [
         'security/ir.model.access.csv',

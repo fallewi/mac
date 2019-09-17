@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import _, api, fields, models
+from odoo import _, fields, models
 from odoo.addons import decimal_precision as dp
 
 
@@ -13,6 +13,7 @@ class POSKitchenOrder(models.Model):
         ], limit=1)
 
     name = fields.Char('Order Name')
+    reference = fields.Char('Order Reference')
     line_ids = fields.One2many('pos.kitchen.order.line', 'order_id', 'Lines')
     session_id = fields.Many2one(
         'pos.session', string='Session', required=True, index=True,

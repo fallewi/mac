@@ -2,7 +2,22 @@
 from odoo import _, http
 
 
+def order_to_list(orders):
+    order_list = []
+    for order in orders:
+        order_list.append({
+            'id': order.id,
+            'name': order.name,
+            'lines': [{
+                'name': line.product_id.name,
+                'qty': line.qty,
+            } for line in order.line_ids],
+        })
+    return order_list
+
+
 class KitchenScreen(http.Controller):
+
     @http.route('/kitchen/screen/<int:session_id>', auth='user', type='http')
     def kitchen_screen(self, session_id, **kwargs):
         return http.request.render('pos_kitchen_screen.kitchen_orders', {'session_id': session_id})
@@ -10,26 +25,18 @@ class KitchenScreen(http.Controller):
     @http.route('/kitchen/orders/<int:session_id>', auth='user', type='json')
     def kitchen_orders(self, session_id):
         request = http.request
-        confirmed = []
-        in_progress = []
-        done = []
-        for order in request.env['pos.kitchen.order'].search([
+        confirmed = order_to_list(request.env['pos.kitchen.order'].search([
             ('session_id', '=', session_id),
-        ]):
-            order_dict = {
-                'id': order.id,
-                'name': order.name,
-                'lines': [{
-                    'name': line.product_id.name,
-                    'qty': line.qty,
-                } for line in order.line_ids],
-            }
-            if order.state == 'confirmed':
-                confirmed.append(order_dict)
-            elif order.state == 'in_progress':
-                in_progress.append(order_dict)
-            else:
-                done.append(order_dict)
+            ('state', '=', 'confirmed'),
+        ]))
+        in_progress = order_to_list(request.env['pos.kitchen.order'].search([
+            ('session_id', '=', session_id),
+            ('state', '=', 'in_progress'),
+        ]))
+        done = order_to_list(request.env['pos.kitchen.order'].search([
+            ('session_id', '=', session_id),
+            ('state', '=', 'done'),
+        ], order='write_date desc'))
         return {'success': True, 'data': {
             'confirmed': confirmed,
             'in_progress': in_progress,
@@ -48,18 +55,37 @@ class KitchenScreen(http.Controller):
             order.state = 'done'
         return {'success': True, 'data': {}}
 
-    @http.route('/kitchen/new_order', auth='user', type='json')
+    @http.route('/kitchen/update_order', auth='user', type='json')
     def new_order(self, **kwargs):
+        if 'name' not in kwargs or 'session_id' not in kwargs:
+            return {'success': False}
+
         request = http.request
+        session_id = kwargs['session_id']
+        order_ref = kwargs['name']
+        linked_orders = request.env['pos.kitchen.order'].search([
+            ('session_id', '=', session_id),
+            ('reference', '=', order_ref),
+        ])
         if kwargs.get('new'):
             order_lines = [(0, 0, {
                 'product_id': line['id'],
                 'qty': line['qty'],
             }) for line in kwargs['new']]
-            request.env['pos.kitchen.order'].create({
-                'name': kwargs['name'],
-                'session_id': kwargs['session_id'],
-                'state': 'confirmed',
-                'line_ids': order_lines,
-            })
+            existing_confirmed_order = linked_orders.filtered(lambda o: o.state == 'confirmed')
+            # Update existing confirmed order
+            if existing_confirmed_order:
+                existing_confirmed_order.write({'line_ids': order_lines})
+            else:
+                name = order_ref
+                if linked_orders:
+                    name = '%s - %d' % (name, len(linked_orders) + 1)
+                request.env['pos.kitchen.order'].create({
+                    'name': name,
+                    'reference': order_ref,
+                    'session_id': session_id,
+                    'state': 'confirmed',
+                    'line_ids': order_lines,
+                })
+
         return {'success': True}
