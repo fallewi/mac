@@ -67,12 +67,12 @@ class KitchenScreen(http.Controller):
             ('session_id', '=', session_id),
             ('reference', '=', order_ref),
         ])
+        existing_confirmed_order = linked_orders.filtered(lambda o: o.state == 'confirmed')
         if kwargs.get('new'):
             order_lines = [(0, 0, {
                 'product_id': line['id'],
                 'qty': line['qty'],
             }) for line in kwargs['new']]
-            existing_confirmed_order = linked_orders.filtered(lambda o: o.state == 'confirmed')
             # Update existing confirmed order
             if existing_confirmed_order:
                 existing_confirmed_order.write({'line_ids': order_lines})
@@ -87,5 +87,14 @@ class KitchenScreen(http.Controller):
                     'state': 'confirmed',
                     'line_ids': order_lines,
                 })
+        if kwargs.get('cancelled') and existing_confirmed_order:
+            for cancel_line in kwargs['cancelled']:
+                for line in existing_confirmed_order.line_ids:
+                    if line.product_id.id == cancel_line['id'] and line.qty >= cancel_line['qty']:
+                        if line.qty == cancel_line['qty']:
+                            line.unlink()
+                        else:
+                            line.qty -= cancel_line['qty']
+                        break
 
         return {'success': True}

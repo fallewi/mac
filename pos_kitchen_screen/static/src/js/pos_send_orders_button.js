@@ -9,7 +9,7 @@ var SendToKicthenButton = screens.ActionButtonWidget.extend({
         var order = this.pos.get_order();
         var changes = order.computeChanges();
         changes.session_id = this.pos.pos_session.id;
-        if (changes.new.length || changes.cancel.length) {
+        if (changes.new.length || changes.cancelled.length) {
             session.rpc('/kitchen/update_order', changes).then(function(result) {
                 if(result.success){
                     order.saveChanges();
