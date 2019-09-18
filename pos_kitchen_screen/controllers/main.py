@@ -96,5 +96,8 @@ class KitchenScreen(http.Controller):
                         else:
                             line.qty -= cancel_line['qty']
                         break
+            
+            if not existing_confirmed_order.line_ids:
+                existing_confirmed_order.unlink()
 
         return {'success': True}
