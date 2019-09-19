@@ -47,8 +47,7 @@ class BookingBooking(models.Model):
         ('confirmed', _('Confirmed')),
         ('cancelled', _('Cancelled')),
     ], 'State', default='new', required=True, track_visibility='onchange')
-    # Computed field to display on calendar
-    end_date = fields.Datetime('End Date', compute='_compute_end_date', store=True)
+    end_date = fields.Datetime('End Date')
 
     @api.model
     def default_get(self, fields_list):
@@ -77,16 +76,6 @@ class BookingBooking(models.Model):
             ]):
                 raise exceptions.ValidationError(_(
                     'The table %s has already been booked for this time' % booking.table_id.name))
-
-    @api.multi
-    @api.depends('date')
-    def _compute_end_date(self):
-        # TODO Make it a parameter
-        booking_duration = 90  # Minutes
-        for booking in self:
-            end_date = fields.Datetime.from_string(booking.date) + timedelta(
-                minutes=booking_duration)
-            booking.end_date = fields.Datetime.to_string(end_date)
 
     @api.multi
     @api.depends('partner_id', 'table_id')
