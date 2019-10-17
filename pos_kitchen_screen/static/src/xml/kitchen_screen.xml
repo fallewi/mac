@@ -1,5 +1,12 @@
 <templates id="template" xml:space="preserve">
     <t t-name="pos_kitchen_screen.screen">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="btn btn-default navbar-btn" onclick="history.back()">Back</button>
+                </div>
+            </div>
+        </nav>
         <div class="col-xs-4">
             <h3>Confirmed</h3>
             <t t-foreach="confirmed" t-as="order">
