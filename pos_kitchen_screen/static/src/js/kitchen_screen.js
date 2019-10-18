@@ -19,14 +19,15 @@ ajax.loadXML('/pos_kitchen_screen/static/src/xml/kitchen_screen.xml', qweb).then
 
 var KitchenScreen = Widget.extend({
     template: 'pos_kitchen_screen.screen',
+    error_template: 'pos_kitchen_screen.error',
     events : {},
     init: function ($wrapper) {
         var self = this;
         self._super();
         self.$wrapper = $wrapper;
         self.orders = {};
-        self.session_id = parseInt(self.$wrapper.data('session_id'));
-        self.fetch_orders_url = '/kitchen/orders/' + self.session_id;
+        self.config_id = parseInt(self.$wrapper.data('config_id'));
+        self.fetch_orders_url = '/kitchen/orders/' + self.config_id;
         self.fetch_orders();
         // refresh screen every 10 seconds
         setInterval(function() {self.fetch_orders()}, 10000);
@@ -50,6 +51,8 @@ var KitchenScreen = Widget.extend({
                     self.orders = result.data;
                     self.render();
                 }
+            } else if (result.error) {
+                self.render_error(result.error);
             }
         });
     },
@@ -62,6 +65,9 @@ var KitchenScreen = Widget.extend({
                 self.fetch_orders();
             }
         });
+    },
+    render_error: function(error) {
+        this.$wrapper.html(qweb.render(this.error_template, {'error': error}));
     }
 });
     return KitchenScreen;

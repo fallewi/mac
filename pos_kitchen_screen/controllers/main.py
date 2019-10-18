@@ -18,23 +18,31 @@ def order_to_list(orders):
 
 class KitchenScreen(http.Controller):
 
-    @http.route('/kitchen/screen/<int:session_id>', auth='user', type='http')
-    def kitchen_screen(self, session_id, **kwargs):
-        return http.request.render('pos_kitchen_screen.kitchen_orders', {'session_id': session_id})
+    @http.route('/kitchen/screen/<int:config_id>', auth='user', type='http')
+    def kitchen_screen(self, config_id, **kwargs):
+        return http.request.render('pos_kitchen_screen.kitchen_orders', {'config_id': config_id})
 
-    @http.route('/kitchen/orders/<int:session_id>', auth='user', type='json')
-    def kitchen_orders(self, session_id):
+    @http.route('/kitchen/orders/<int:config_id>', auth='user', type='json')
+    def kitchen_orders(self, config_id):
         request = http.request
+        config = request.env['pos.config'].browse(config_id)
+        if not config.current_session_id:
+            return {
+                'success': False,
+                'error': _('No session is currently open for the point of sale "%s". '
+                           'Please open a session to see the kitchen orders' % config.name)
+            }
+
         confirmed = order_to_list(request.env['pos.kitchen.order'].search([
-            ('session_id', '=', session_id),
+            ('session_id', '=', config.current_session_id.id),
             ('state', '=', 'confirmed'),
         ]))
         in_progress = order_to_list(request.env['pos.kitchen.order'].search([
-            ('session_id', '=', session_id),
+            ('session_id', '=', config.current_session_id.id),
             ('state', '=', 'in_progress'),
         ]))
         done = order_to_list(request.env['pos.kitchen.order'].search([
-            ('session_id', '=', session_id),
+            ('session_id', '=', config.current_session_id.id),
             ('state', '=', 'done'),
         ], order='write_date desc'))
         return {'success': True, 'data': {

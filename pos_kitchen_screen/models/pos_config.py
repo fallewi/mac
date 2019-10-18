@@ -14,6 +14,6 @@ class PosConfig(models.Model):
             raise exceptions.UserError(_('Open a session before opening the kitchen screen'))
         return {
             'type': 'ir.actions.act_url',
-            'url':   '/kitchen/screen/%d' % self.current_session_id.id,
+            'url':   '/kitchen/screen/%d' % self.id,
             'target': 'self',
         }
