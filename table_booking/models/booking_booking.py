@@ -40,6 +40,7 @@ class BookingBooking(models.Model):
     mobile = fields.Char(related='partner_id.mobile')
     table_id = fields.Many2one('booking.table', 'Table')
     line_ids = fields.One2many('booking.line', 'booking_id', 'Menus')
+    seats_amount = fields.Integer('Amount of Seats', default=2)
     date = fields.Datetime('Date', required=True)
     notes = fields.Text('Notes')
     state = fields.Selection([

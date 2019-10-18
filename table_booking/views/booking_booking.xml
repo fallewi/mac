@@ -32,6 +32,7 @@
                       color="table_id" mode="week">
                 <field name="display_name"/>
                 <field name="state"/>
+                <field name="seats_amount"/>
             </calendar>
         </field>
     </record>
@@ -44,6 +45,7 @@
                 <field name="partner_id"/>
                 <field name="email"/>
                 <field name="phone"/>
+                <field name="seats_amount"/>
                 <field name="table_id"/>
                 <field name="date"/>
                 <field name="end_date"/>
@@ -67,6 +69,7 @@
                         <field name="phone" attrs="{'invisible': [('partner_id', '=', False)], 'required': [('mobile', '=', False)]}"/>
                         <field name="mobile" attrs="{'invisible': [('partner_id', '=', False)], 'required': [('phone', '=', False)]}"/>
                         <field name="table_id"/>
+                        <field name="seats_amount"/>
                         <field name="date"/>
                         <field name="end_date"/>
                         <field name="notes"/>
