@@ -69,9 +69,9 @@ class BookingBooking(models.Model):
                 '|',
                 '&',
                 ('date', '>=', booking.date),
-                ('date', '<=', booking.end_date),
+                ('date', '<', booking.end_date),
                 '&',
-                ('end_date', '>=', booking.date),
+                ('end_date', '>', booking.date),
                 ('end_date', '<=', booking.end_date),
             ]):
                 raise exceptions.ValidationError(_(
