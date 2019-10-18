@@ -38,7 +38,7 @@ class BookingBooking(models.Model):
     email = fields.Char(related='partner_id.email')
     phone = fields.Char(related='partner_id.phone')
     mobile = fields.Char(related='partner_id.mobile')
-    table_id = fields.Many2one('booking.table', 'Table', required=True)
+    table_id = fields.Many2one('booking.table', 'Table')
     line_ids = fields.One2many('booking.line', 'booking_id', 'Menus')
     date = fields.Datetime('Date', required=True)
     notes = fields.Text('Notes')
@@ -63,7 +63,7 @@ class BookingBooking(models.Model):
     @api.constrains('date', 'end_date', 'table_id')
     def check_table_availability(self):
         for booking in self:
-            if self.search([
+            if booking.table_id and self.search([
                 ('id', '!=', booking.id),
                 ('table_id', '=', booking.table_id.id),
                 '|',
@@ -82,6 +82,9 @@ class BookingBooking(models.Model):
     def name_get(self):
         result = []
         for booking in self:
-            name = '%s - %s' % (booking.table_id.name, booking.partner_id.name)
+            if booking.table_id:
+                name = '%s - %s' % (booking.table_id.name, booking.partner_id.name)
+            else:
+                name = booking.partner_id.name
             result.append((booking.id, name))
         return result
