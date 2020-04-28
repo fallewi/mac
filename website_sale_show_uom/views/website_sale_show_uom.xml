@@ -49,6 +49,7 @@
             </xpath>
         </template>
 
+        <!--
         <template id="modal_optional" inherit_id="website_sale_options.modal" name="Modal Optional Products Show UOM">
             <xpath expr="//span[@class='oe_price']" position="after">
                 <t t-if="product.uom_id.name">
@@ -64,6 +65,7 @@
                 </t>
             </xpath>
         </template>
+        -->
 
     </data>
 </openerp>
