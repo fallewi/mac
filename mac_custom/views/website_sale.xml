@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_frontend" inherit_id="website.assets_frontend" name="Shop">
+      <xpath expr="." position="inside">
+        <script type="text/javascript" src="/mac_custom/static/src/js/website_sale_delivery.js"/>
+      </xpath>
+    </template>
+
+    <template id="payment_delivery_information" name="Delivery Information" inherit_id="website_sale_delivery.payment_delivery">
+        <xpath expr="//div[@id='delivery_carrier']" position="before">
+            <div t-if="deliveries" class="col-md-12 o_website_sale_rightfit" id="delivery_information">
+                <h3 class="mb24">Choose your preferred delivery date</h3>
+                <div class="col-xl-6" id="date_shipping_div">
+                    <label class="col-form-label" for="name">Shipping date</label>
+                    <input type="date" id="date_shipping" name="date_shipping" t-att-value="date_shipping or order.date_shipping" />
+                </div>
+                <div class="panel panel-default" id="period_shipping_div">
+                    <ul class="list-group">
+                    <t t-set="period_nb" t-value="len(periods)" />
+                    <t t-foreach="periods" t-as="period">
+                        <li class="list-group-item">
+                            <input t-att-value="period[0]" t-att-id="'period_%s' % period[0]" type="radio" name="period_shipping" t-att-checked="order.period_shipping == period[0] and 'checked' or False" t-att-class="'hidden' if delivery_nb == 1 else ''"/>
+                            <span t-esc="period[1]"/>
+                        </li>
+                    </t>
+                    </ul>
+                </div>
+                <div id="special_instruction_div"  t-attf-class="col-xl-12">
+                    <label class="col-form-label" for="special_instruction">Message or special instructions</label>
+                    <textarea name="special_instruction" id="special_instruction"
+                              class="form-control o_input o_composer_text_field"><t t-esc="special_instruction or order.special_instruction"/></textarea>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>
