@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <template id="products_item" inherit_id="website_sale.products_item" name="Products Item Show UOM">
+            <xpath expr="//span[@itemprop='priceCurrency']" position="after">
+                <t t-if="product.uom_id.name">
+                    <label>/</label>
+                    <span t-field="product.uom_id.name" style="white-space: nowrap;"/>
+                </t>
+            </xpath>
+        </template>
+
+        <template id="product_price" inherit_id="website_sale.product_price" name="Product Price Show UOM">
+            <xpath expr="//b[@class='oe_price']" position="after">
+                <t t-if="product.uom_id.name">
+                    <b>
+                        <label>/</label>
+                        <span t-field="product.uom_id.name" style="white-space: nowrap;"/>
+                    </b>
+                </t>
+            </xpath>
+        </template>
+
+        <template id="cart" inherit_id="website_sale.cart_lines" name="Shopping Cart Show UOM">
+            <xpath expr="//span[@t-field='line.price_reduce_taxexcl']" position="after">
+                <t t-if="line.product_id.uom_id.name">
+                    <label>/</label>
+                    <span t-field="line.product_id.uom_id.name" style="white-space: nowrap;"/>
+                </t>
+            </xpath>
+        </template>
+
+        <template id="payment" inherit_id="website_sale.payment" name="Payment Show UOM">
+            <xpath expr="//span[@t-field='line.price_reduce_taxexcl']" position="after">
+                <t t-if="line.product_id.uom_id.name">
+                    <label>/</label>
+                    <span t-field="line.product_id.uom_id.name" style="white-space: nowrap;"/>
+                </t>
+            </xpath>
+        </template>
+
+       <template id="suggested_products_list" inherit_id="website_sale.suggested_products_list" name="Suggested Products Show UOM">
+            <xpath expr="//span[@t-field='product.website_price']" position="after">
+                <t t-if="product.uom_id.name">
+                    <label>/</label>
+                    <span t-field="product.uom_id.name" style="white-space: nowrap;"/>
+                </t>
+            </xpath>
+        </template>
+
+        <template id="modal_optional" inherit_id="website_sale_options.modal" name="Modal Optional Products Show UOM">
+            <xpath expr="//span[@class='oe_price']" position="after">
+                <t t-if="product.uom_id.name">
+                    <label>/ </label>
+                    <span t-field="product.uom_id.name" style="white-space: nowrap;"/>
+                </t>
+            </xpath>
+
+            <xpath expr="//p[@class='css_not_available_msg bg-danger']" position="after">
+                <t t-if="product.uom_id.name">
+                    <label>/ </label>
+                    <span t-field="product.uom_id.name" style="white-space: nowrap;"/>
+                </t>
+            </xpath>
+        </template>
+
+    </data>
+</openerp>
+
