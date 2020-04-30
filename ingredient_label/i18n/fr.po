@@ -1,0 +1,197 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* ingredient_label
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-30 16:46+0000\n"
+"PO-Revision-Date: 2020-04-30 12:51-0400\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: fr\n"
+"X-Generator: Poedit 1.8.13\n"
+
+#. module: ingredient_label
+#: model:ir.ui.view,arch_db:ingredient_label.product_normal_form_view
+msgid "<span>days</span>"
+msgstr "<span>jours</span>"
+
+#. module: ingredient_label
+#: model:ir.ui.view,arch_db:ingredient_label.view_create_lot
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: ingredient_label
+#: model:ir.actions.act_window,name:ingredient_label.action_view_create_lot
+#: model:ir.model,name:ingredient_label.model_ingredient_label_create_lot
+#: model:ir.ui.view,arch_db:ingredient_label.view_create_lot
+msgid "Create Lot"
+msgstr "Créer un lot"
+
+#. module: ingredient_label
+#: model:ir.ui.view,arch_db:ingredient_label.view_picking_form
+msgid "Create Lot Numbers"
+msgstr "Créer des numéros de lot"
+
+#. module: ingredient_label
+#: model:ir.ui.view,arch_db:ingredient_label.view_create_lot
+msgid "Create new lots for selected product. You can print their labels immediately."
+msgstr "Créez de nouveaux lots pour le produit sélectionné. Vous pouvez imprimer leurs étiquettes immédiatement."
+
+#. module: ingredient_label
+#: model:ir.model.fields,field_description:ingredient_label.field_ingredient_label_create_lot_create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: ingredient_label
+#: model:ir.model.fields,field_description:ingredient_label.field_ingredient_label_create_lot_create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: ingredient_label
+#: model:ir.model.fields,help:ingredient_label.field_ingredient_label_create_lot_product_uom_id
+msgid "Default Unit of Measure used for all stock operation."
+msgstr "Unité de mesure par défaut utilisée pour toutes les opérations de stock"
+
+#. module: ingredient_label
+#: model:ir.model.fields,field_description:ingredient_label.field_stock_production_lot_description
+msgid "Description"
+msgstr "Description"
+
+#. module: ingredient_label
+#: model:ir.model.fields,field_description:ingredient_label.field_ingredient_label_create_lot_display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: ingredient_label
+#: model:ir.model.fields,field_description:ingredient_label.field_ingredient_label_create_lot_id
+msgid "ID"
+msgstr "ID"
+
+#. module: ingredient_label
+#: model:ir.model.fields,field_description:ingredient_label.field_product_product_ingredients
+#: model:ir.ui.view,arch_db:ingredient_label.product_normal_form_view
+msgid "Ingredients"
+msgstr "Ingrédients"
+
+#. module: ingredient_label
+#: model:ir.model.fields,field_description:ingredient_label.field_ingredient_label_create_lot_label_id
+msgid "Label"
+msgstr "Libellé"
+
+#. module: ingredient_label
+#: model:ir.model.fields,help:ingredient_label.field_ingredient_label_create_lot_label_id
+msgid "Label to print."
+msgstr "Étiquette à imprimer."
+
+#. module: ingredient_label
+#: model:ir.model.fields,field_description:ingredient_label.field_ingredient_label_create_lot___last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: ingredient_label
+#: model:ir.model.fields,field_description:ingredient_label.field_ingredient_label_create_lot_write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: ingredient_label
+#: model:ir.model.fields,field_description:ingredient_label.field_ingredient_label_create_lot_write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: ingredient_label
+#: model:ir.ui.view,arch_db:ingredient_label.product_normal_form_view
+msgid "List of ingredients."
+msgstr "Liste d’ingrédients :"
+
+#. module: ingredient_label
+#: model:ir.model.fields,field_description:ingredient_label.field_ingredient_label_create_lot_lot_qty
+msgid "Lot Count"
+msgstr "Nombre de lots"
+
+#. module: ingredient_label
+#: model:ir.model,name:ingredient_label.model_stock_production_lot
+msgid "Lot/Serial"
+msgstr "Lot/N° série"
+
+#. module: ingredient_label
+#: model:ir.model.fields,help:ingredient_label.field_product_product_alert_variant_time
+msgid "Number of days before an alert should be raised on the lot/serial number."
+msgstr "Nombre de jours avant qu'une alerte ne se déclenche pour ce lot/numéro de série."
+
+#. module: ingredient_label
+#: model:ir.model.fields,help:ingredient_label.field_product_product_life_variant_time
+msgid "Number of days before the goods may become dangerous and must not be consumed. It will be computed on the lot/serial number."
+msgstr "Nombre de jours avant que les marchandises ne deviennent dangereuses et non consommables. Calculé en fonction du lot/numéro de série."
+
+#. module: ingredient_label
+#: model:ir.model.fields,help:ingredient_label.field_product_product_removal_variant_time
+msgid "Number of days before the goods should be removed from the stock. It will be computed on the lot/serial number."
+msgstr "Nombre de jours avant que les marchandises ne doivent être retirées du stock. Calculé en fonction du lot/numéro de série."
+
+#. module: ingredient_label
+#: model:ir.model.fields,help:ingredient_label.field_product_product_use_variant_time
+msgid "Number of days before the goods starts deteriorating, without being dangerous yet. It will be computed on the lot/serial number."
+msgstr "Nombre de jours avant que les marchandises ne commencent à se détériorer, sans pour autant être dangereuses. Calculé en fonction du lot/numéro de série."
+
+#. module: ingredient_label
+#: model:ir.model.fields,field_description:ingredient_label.field_ingredient_label_create_lot_print_label
+msgid "Print Label"
+msgstr "Imprimer étiquette"
+
+#. module: ingredient_label
+#: model:ir.model.fields,field_description:ingredient_label.field_ingredient_label_create_lot_printer_id
+msgid "Printer"
+msgstr "Imprimante"
+
+#. module: ingredient_label
+#: model:ir.model.fields,help:ingredient_label.field_ingredient_label_create_lot_printer_id
+msgid "Printer used to print the labels."
+msgstr "Imprimante utilisée pour imprimer les étiquettes."
+
+#. module: ingredient_label
+#: model:ir.model,name:ingredient_label.model_product_product
+#: model:ir.model.fields,field_description:ingredient_label.field_ingredient_label_create_lot_product_id
+msgid "Product"
+msgstr "Article"
+
+#. module: ingredient_label
+#: model:ir.model.fields,field_description:ingredient_label.field_ingredient_label_create_lot_product_uom_qty
+msgid "Quantity"
+msgstr "Quantité"
+
+#. module: ingredient_label
+#: model:ir.model.fields,field_description:ingredient_label.field_ingredient_label_create_lot_product_uom_id
+msgid "Unit of Measure"
+msgstr "Unité de mesure"
+
+#. module: ingredient_label
+#: model:ir.model.fields,field_description:ingredient_label.field_product_product_alert_variant_time
+msgid "Variant Alert Time"
+msgstr "Heure d'alerte de variante"
+
+#. module: ingredient_label
+#: model:ir.model.fields,field_description:ingredient_label.field_product_product_life_variant_time
+msgid "Variant Life Time"
+msgstr "Durée de vie des variantes"
+
+#. module: ingredient_label
+#: model:ir.model.fields,field_description:ingredient_label.field_product_product_removal_variant_time
+msgid "Variant Removal Time"
+msgstr "Temps de suppression des variantes"
+
+#. module: ingredient_label
+#: model:ir.model.fields,field_description:ingredient_label.field_product_product_use_variant_time
+msgid "Variant Use Time"
+msgstr "Durée d'utilisation des variantes"
+
+#. module: ingredient_label
+#: model:ir.ui.view,arch_db:ingredient_label.view_create_lot
+msgid "_Apply"
+msgstr "_Appliquer"

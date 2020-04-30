@@ -23,6 +23,11 @@ msgid "AM"
 msgstr "AM"
 
 #. module: mac_custom
+#: model:ir.model.fields,field_description:mac_custom.field_product_uom_accept_decimal
+msgid "Accept Decimal"
+msgstr "Accepter décimal"
+
+#. module: mac_custom
 #: model:ir.ui.view,arch_db:mac_custom.payment_delivery_information
 msgid "Choose your preferred delivery date"
 msgstr "Date de livraison ou ramassage"
@@ -33,6 +38,11 @@ msgstr "Date de livraison ou ramassage"
 #, python-format
 msgid "Evening"
 msgstr "Soirée"
+
+#. module: mac_custom
+#: model:ir.ui.view,arch_db:mac_custom.product
+msgid "Ingredients"
+msgstr "Ingrédients"
 
 #. module: mac_custom
 #: model:ir.model.fields,field_description:mac_custom.field_sale_order_special_instruction
@@ -56,14 +66,23 @@ msgid "Shipping Date"
 msgstr "Date Livraison"
 
 #. module: mac_custom
+#: model:ir.ui.view,arch_db:mac_custom.payment_delivery_information
+msgid "Shipping date"
+msgstr "Date livraison"
+
+#. module: mac_custom
 #: model:ir.model.fields,field_description:mac_custom.field_sale_order_period_shipping
 msgid "Shipping Period"
 msgstr "Période de livraison"
 
 #. module: mac_custom
-#: model:ir.ui.view,arch_db:mac_custom.payment_delivery_information
-msgid "Shipping date"
-msgstr "Date livraison"
+#: model:ir.ui.view,arch_db:mac_custom.product_quantity
+msgid ""
+"To enter decimals,<br/>\n"
+"                  Click on number between the - and the +"
+msgstr ""
+"Pour entrer des décimales,,<br/>\n"
+"                  cliquez sur le chiffre entre le - et le +"
 
 #. module: website_sale
 #: model:ir.ui.view,arch_db:website_sale.payment
