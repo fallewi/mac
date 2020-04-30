@@ -27,6 +27,7 @@
                 <span class="fa fa-long-arrow-right"/>
             </a>
             <t t-if="suggest_create_account">
+                <br/>
                 <a class="btn btn-primary pull-right mb32"
                    href="/web/signup?redirect=/shop/checkout">
                     <span>Sign up and checkout</span>

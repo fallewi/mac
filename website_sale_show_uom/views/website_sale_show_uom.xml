@@ -23,6 +23,18 @@
         </template>
 
         <template id="cart" inherit_id="website_sale.cart_lines" name="Shopping Cart Show UOM">
+            <!--
+            <xpath expr="//thead/tr/th[hasclass('td-price')]" position="after">
+                <th></th>
+            </xpath>
+            <xpath expr="//tbody/t/tr/td[hasclass('td-price')]" position="after">
+                <td t-if="line.product_id.uom_id.name">
+                    <label>/</label>
+                    <span t-field="line.product_id.uom_id.name" style="white-space: nowrap;"/>
+                </td>
+            </xpath>
+            -->
+
             <xpath expr="//span[@t-field='line.price_reduce_taxexcl']" position="after">
                 <t t-if="line.product_id.uom_id.name">
                     <label>/</label>
@@ -32,6 +44,17 @@
         </template>
 
         <template id="payment" inherit_id="website_sale.payment" name="Payment Show UOM">
+            <!--
+            <xpath expr="//thead/tr/th[hasclass('td-price')]" position="after">
+                <th></th>
+            </xpath>
+            <xpath expr="//tbody/tr/td[hasclass('td-price')]" position="after">
+                <td t-if="line.product_id.uom_id.name">
+                    <label>/</label>
+                    <span t-field="line.product_id.uom_id.name" style="white-space: nowrap;"/>
+                </td>
+            </xpath>
+            -->
             <xpath expr="//span[@t-field='line.price_reduce_taxexcl']" position="after">
                 <t t-if="line.product_id.uom_id.name">
                     <label>/</label>

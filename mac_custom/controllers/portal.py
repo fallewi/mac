@@ -2,6 +2,7 @@
 
 from datetime import datetime
 
+from odoo import _
 from odoo.addons.portal.controllers.portal import CustomerPortal
 from odoo.addons.website_sale_delivery.controllers.main import WebsiteSaleDelivery
 from odoo.http import Controller, request, route
@@ -10,7 +11,7 @@ from odoo.tools import DEFAULT_SERVER_DATE_FORMAT
 period_shipping = [
     ('am', 'AM'),
     ('pm', 'PM'),
-    ('evening', 'Evening')
+    ('evening', _('Evening'))
 ]
 
 class CustomerPortal(CustomerPortal):

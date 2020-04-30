@@ -10,6 +10,7 @@
     """,
     'depends': ['website_sale'],
     'data': [
+        "views/product.xml",
         "views/sale.xml",
         "views/website_sale.xml",
     ],

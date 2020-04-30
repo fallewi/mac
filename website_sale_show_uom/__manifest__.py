@@ -34,7 +34,9 @@
     ''',
     'category': 'eCommerce',
     'sequence': 10,
-    'data': ['views/website_sale_show_uom.xml',],
+    'data': [
+        'security/ir.model.access.csv',
+        'views/website_sale_show_uom.xml',],
     'images': ['static/description/banner.png',],
     'installable': True,
     'auto_install': False,

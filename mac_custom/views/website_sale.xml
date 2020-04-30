@@ -2,6 +2,9 @@
 <odoo>
     <template id="assets_frontend" inherit_id="website.assets_frontend" name="Shop">
       <xpath expr="." position="inside">
+          <!--  En commentaire car ne fonctionne pas, mis de coté pour plus tard.
+        <script type="text/javascript" src="/mac_custom/static/src/js/website_sale.js"/>
+        -->
         <script type="text/javascript" src="/mac_custom/static/src/js/website_sale_delivery.js"/>
       </xpath>
     </template>
@@ -11,7 +14,6 @@
             <div t-if="deliveries" class="col-md-12 o_website_sale_rightfit" id="delivery_information">
                 <h3 class="mb24">Choose your preferred delivery date</h3>
                 <div class="col-xl-6" id="date_shipping_div">
-                    <label class="col-form-label" for="name">Shipping date</label>
                     <input type="date" id="date_shipping" name="date_shipping" t-att-value="date_shipping or order.date_shipping" />
                 </div>
                 <div class="panel panel-default" id="period_shipping_div">
@@ -31,6 +33,15 @@
                               class="form-control o_input o_composer_text_field"><t t-esc="special_instruction or order.special_instruction"/></textarea>
                 </div>
             </div>
+        </xpath>
+    </template>
+
+    <template id="product_quantity" inherit_id="website_sale.product_quantity" name="Select Quantity">
+        <xpath expr="//div[hasclass('css_quantity')]" position="after">
+                <p t-if="product.uom_id.accept_decimal" class="text-muted">
+                  To enter decimals,<br />
+                  Click on number between the - and the +
+                </p>
         </xpath>
     </template>
 
