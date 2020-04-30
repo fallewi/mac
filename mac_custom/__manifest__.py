@@ -8,7 +8,7 @@
     'description': """
         Traduction personnalisé et changement mineur.
     """,
-    'depends': ['website_sale'],
+    'depends': ['website_sale', 'ingredient_label'],
     'data': [
         "views/product.xml",
         "views/sale.xml",
