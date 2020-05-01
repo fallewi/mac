@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="product_filter_value_view_tree" model="ir.ui.view">
+        <field name="name">product.filter.value.view.tree</field>
+        <field name="model">product.filter.value</field>
+        <field name="arch" type="xml">
+            <tree string="filters" editable="top">
+                <field name="sequence" widget="handle"/>
+                <field name="filter_id"/>
+                <field name="name"/>
+
+            </tree>
+        </field>
+    </record>
+    <record id="product_filter_value_action" model="ir.actions.act_window">
+        <field name="name">Filter Values</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.filter.value</field>
+        <field name="view_mode">tree</field>
+        <field name="view_type">form</field>
+        <field name="view_id" ref="product_filter_value_view_tree"/>
+        <field name="domain">[('product_ids.product_tmpl_id', '=', active_id)]</field>
+        <field name="context">{'default_product_tmpl_id': active_id}</field>
+    </record>
+
+        <record id="filter_group_tree_view" model="ir.ui.view">
+            <field name="name">product.filter.group.tree</field>
+            <field name="model">product.filter.group</field>
+            <field name="arch" type="xml">
+                <tree string="Filter Group" editable="top">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="product_filter_group_view_form" model="ir.ui.view">
+            <field name="name">product.filter.form</field>
+            <field name="model">product.filter.group</field>
+            <field name="arch" type="xml">
+                <form string="Product Filter">
+                    <group>
+                        <group name="main_fields">
+						    <field name="sequence"/>
+                            <label for="name" string="Group Name"/>
+                            <field name="name" nolabel="1"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="filter_group_action" model="ir.actions.act_window">
+            <field name="name">Filter Group</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.filter.group</field>
+            <field name="view_mode">tree</field>
+            <field name="view_type">form</field>
+        </record>
+        <record id="filter_tree_view" model="ir.ui.view">
+            <field name="name">product.filter.tree</field>
+            <field name="model">product.filter</field>
+            <field name="arch" type="xml">
+                <tree string="Filter Values" editable="top">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name"/>
+                    <field name="type"/>
+                    <field name="group_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="product_filter_view_form" model="ir.ui.view">
+            <field name="name">product.filter.form</field>
+            <field name="model">product.filter</field>
+            <field name="arch" type="xml">
+                <form string="Product filter">
+                    <group>
+                        <group name="main_fields">
+                            <label for="name" string="Feature Name"/>
+                            <field name="name" nolabel="1"/>
+                            <field name="type"/>
+                            <field name="group_id"/>
+                        </group>
+                    </group>
+                    <group name="values_ids">
+                        <label for="value_ids" string="Feature Values"/>
+                        <field name="value_ids" widget="one2many_list" nolabel="1">
+                            <tree string="Values" editable="bottom">
+                                <field name="name"/>
+                                <field name="html_color"/>
+                            </tree>
+                            <form string="Values">
+                                <field name="name"/>
+                            </form>
+                        </field>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="filter_action" model="ir.actions.act_window">
+            <field name="name">Filters</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.filter</field>
+            <field name="view_mode">tree</field>
+            <field name="view_type">form</field>
+        </record>
+
+        <record id="filter_value_tree_view" model="ir.ui.view">
+            <field name="name">product.filter.value.tree</field>
+            <field name="model">product.filter.value</field>
+            <field name="arch" type="xml">
+                <tree string="Variant Values" editable="top">
+                    <field name="sequence" widget="handle"/>
+                    <field name="filter_id"/>
+                    <field name="name"/>
+					<field name="html_color"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="filter_value_action" model="ir.actions.act_window">
+            <field name="name">Filter Values</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.filter.value</field>
+            <field name="view_mode">tree</field>
+            <field name="view_type">form</field>
+        </record>
+
+    <record id="product_filter_line_form" model="ir.ui.view">
+        <field name="name">product.filter.line.form</field>
+        <field name="model">product.filter.line</field>
+        <field name="mode">primary</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <form string="Product Filter and Values">
+                <group name="main_field">
+                    <label for="filter_id" string="filter Name"/>
+                    <field name="filter_id" nolabel="1"/>
+                    <field name="value_ids" widget="one2many_list">
+                        <tree string="Values">
+                            <field name="name"/>
+                            <field name="html_color"/>
+                        </tree>
+                        <form string="Values">
+                            <field name="name"/>
+                        </form>
+                    </field>
+                </group>
+            </form>
+        </field>
+    </record>
+    <menuitem action="filter_group_action" id="menu_filter_group_action" parent="sale.prod_config_main" sequence="5"/>    
+    <menuitem action="filter_action" id="menu_filter_action" parent="sale.prod_config_main" sequence="5"/>
+    <menuitem action="filter_value_action" id="menu_filter_value_action" parent="sale.prod_config_main" sequence="5"/>
+</odoo>

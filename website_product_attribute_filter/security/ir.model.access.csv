@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_filter_group,product.filter.group,model_product_filter_group,,1,0,1,0
+access_product_filter_group_manager,product.filter.group.manager,model_product_filter_group,sales_team.group_sale_manager,1,1,1,1
+access_product_filter,product.filter,model_product_filter,,1,0,1,0
+access_product_filter_manager,product.filter.manager,model_product_filter,sales_team.group_sale_manager,1,1,1,1
+access_product_filter_value,product.filter.value,model_product_filter_value,,1,0,1,0
+access_product_filter_value_manager,product.filter.value.manager,model_product_filter_value,sales_team.group_sale_manager,1,1,1,1
+access_product_filter_line,product.filter.line,model_product_filter_line,,1,0,1,0
+access_product_filter_line_manager,product.filter.line.manager,model_product_filter_line,sales_team.group_sale_manager,1,1,1,1
