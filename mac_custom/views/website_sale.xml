@@ -56,9 +56,21 @@
         </xpath>
     </template>
 
-    <template id="products_attributes" inherit_id="website_product_attribure_filter.products_attributes" name="Product Attribute's Filters Category">
-        <xpath expr="//div[@class='wpf-groups']/t/li" position="attributes">
+    <template id="product_count" inherit_id="website_product_attribute_filter.product_count" name="Product Count">
+        <xpath expr="//form[hasclass('js_attributes')]/ul/t/li" position="attributes">
+            <attribute name="t-if">a.show_in_website and a.value_ids and len(a.value_ids) &gt; 1</attribute>
+        </xpath>
+    </template>
+
+    <template id="products_attributes" inherit_id="website_product_attribute_filter.products_attributes" name="Product Attribute's Filters Category">
+        <xpath expr="//div[@class='wpf-groups']/ul/t/li" position="attributes">
             <attribute name="t-if">a.show_in_website and a.value_ids and len(a.value_ids) &gt; 1 and a.category_id and a.category_id.id==att_cate.id</attribute>
+        </xpath>
+    </template>
+
+    <template id="products_filters" inherit_id="website_product_attribute_filter.products_filters" name="Applied Filters">
+        <xpath expr="//form[@class='js_attributes_applied']/t/t" position="attributes">
+            <attribute name="t-if">a.show_in_website and a.id in appied_filter_result.ids</attribute>
         </xpath>
     </template>
 

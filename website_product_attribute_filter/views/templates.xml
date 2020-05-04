@@ -8,7 +8,7 @@
 	</template>
     	<template id="product_count" inherit_id="website_sale.products_attributes" active="False" customize_show="True" name="Product Count" priority="10">>
         <xpath expr="//form[hasclass('js_attributes')]" position="replace">
-            <form class="js_attributes" method="get">
+                <form class="js_attributes" method="get">
                 <input type="hidden" name="search" t-att-value="search" />
                 <ul class="wpf-filter nav nav-pills nav-stacked mt16">
                     <t t-foreach="attributes" t-as="a">
