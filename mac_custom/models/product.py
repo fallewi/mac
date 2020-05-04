@@ -13,3 +13,9 @@ class ProductTemplate(models.Model):
     _inherit = "product.template"
 
     import_sequence = fields.Char('Import Sequence')
+
+
+class SaleOrder(models.Model):
+    _inherit = "product.attribute"
+
+    show_in_website = fields.Boolean('Show in website', default=True)
