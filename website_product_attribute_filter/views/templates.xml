@@ -20,10 +20,12 @@
                                 <select class="form-control" name="attrib">
                                     <option value="" />
                                     <t t-foreach="a.value_ids" t-as="v">
-                                        <option t-att-value="'%s-%s' % (a.id,v.id)" t-att-selected="v.id in attrib_set">
-                                            <t t-esc="v.name"/>
-                                            (<t t-esc="variant_counts.get(v.id)"/>)
-                                        </option>
+                                        <t t-if="variant_counts and variant_counts.get(v.id)">
+                                            <option t-att-value="'%s-%s' % (a.id,v.id)" t-att-selected="v.id in attrib_set">
+                                                <t t-esc="v.name"/>
+                                                (<t t-esc="variant_counts.get(v.id)"/>)
+                                            </option>
+                                        </t>
                                     </t>
                                 </select>
                             </t>

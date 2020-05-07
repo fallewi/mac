@@ -5,7 +5,9 @@ from datetime import datetime
 from odoo import _
 from odoo.addons.portal.controllers.portal import CustomerPortal
 from odoo.addons.website_sale_delivery.controllers.main import WebsiteSaleDelivery
+from odoo.addons.website_sale.controllers.main import WebsiteSale
 from odoo.http import Controller, request, route
+from odoo import http
 from odoo.tools import DEFAULT_SERVER_DATE_FORMAT
 
 period_shipping = [
@@ -57,3 +59,18 @@ class WebsiteSaleDelivery(WebsiteSaleDelivery):
             order.special_instruction = post.get('special_instruction') or order.special_instruction
 
         return super().payment(**post)
+
+
+class WebsiteSale(WebsiteSale):
+
+    @http.route()
+    def shop(self, page=0, category=None, search='', ppg=False, **post):
+        res = super(WebsiteSale, self).shop(page, category, search, ppg, **post)
+        for attribute in res.qcontext.get('attributes'):
+            found = False
+            for product in res.qcontext.get('products'):
+                if product.attribute_line_ids.search([('attribute_id', '=', attribute.id), ('product_tmpl_id', '=', product.id)]).value_ids:
+                    found = True
+            if not found:
+                res.qcontext['attributes'] -= attribute
+        return res
