@@ -126,7 +126,7 @@
 
 
 .wpf-applied { width: 100%; display: inline-block; vertical-align: top; border: 1px solid #ddd; margin-bottom: 5px; }
-.wpf-applied .wpf-h3 { margin: 0; padding: 8px 15px; text-align: center; background: #a3498b; font-size: 16px; font-weight: 600; color: #fff;  }
+.wpf-applied .wpf-h3 { margin: 0; padding: 8px 15px; text-align: center; background: #397b10; font-size: 16px; font-weight: 600; color: #fff;  }
 .wpf-applied .js_attributes_applied { padding: 15px; margin: 0 !important }
 .wpf-applied .wpf-title { width: 100%; display: inline-block; vertical-align: top; font-size: 13px; font-weight: bold; margin: 0 0 15px; border-bottom: 1px solid #ddd; padding: 0 0 8px;}
 
@@ -146,7 +146,7 @@ div#products_grid_before > form.js_attributes{ margin-top: 15px; }
   margin: 0;
   padding: 0;
 }
-.wpf-groups .wpf-head { margin: 0; padding: 8px 15px; text-align: center; background: #a3498b; font-size: 16px; font-weight: 600; color: #fff; }
+.wpf-groups .wpf-head { margin: 0; padding: 8px 15px; text-align: center; background: #397b10; font-size: 16px; font-weight: 600; color: #fff; }
 
 .wpf-groups .wpf-title  { width: 100%; display: inline-block; vertical-align: top; border-bottom: 1px solid #eee; font-size: 13px; font-weight: 600; margin: 0 0 10px 0; padding: 0 0 10px;}
 .wpf-groups .wpf-stacked { margin: 0; padding: 0; list-style-type: none;  }
