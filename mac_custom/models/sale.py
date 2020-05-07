@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import api, fields, models
+from odoo import api, fields, models, _
 
 
 class SaleOrder(models.Model):
@@ -12,6 +12,6 @@ class SaleOrder(models.Model):
     period_shipping = fields.Selection([
         ('am', 'AM'),
         ('pm', 'PM'),
-        ('evening', 'Evening')],
+        ('evening', _('Evening'))],
         string='Shipping Period', copy=False)
     special_instruction = fields.Text('Message or special instructions')

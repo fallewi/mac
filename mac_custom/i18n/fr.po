@@ -33,7 +33,7 @@ msgid "Choose your preferred delivery date"
 msgstr "Date de livraison ou ramassage"
 
 #. module: mac_custom
-#: code:addons/mac_custom/controllers/portal.py:14
+#: code:addons/mac_custom/models/sale.py:15
 #: selection:sale.order,period_shipping:0
 #, python-format
 msgid "Evening"

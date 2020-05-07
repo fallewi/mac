@@ -8,13 +8,6 @@ from odoo.addons.website_sale_delivery.controllers.main import WebsiteSaleDelive
 from odoo.addons.website_sale.controllers.main import WebsiteSale
 from odoo.http import Controller, request, route
 from odoo import http
-from odoo.tools import DEFAULT_SERVER_DATE_FORMAT
-
-period_shipping = [
-    ('am', 'AM'),
-    ('pm', 'PM'),
-    ('evening', _('Evening'))
-]
 
 class CustomerPortal(CustomerPortal):
 
@@ -33,7 +26,7 @@ class WebsiteSaleDelivery(WebsiteSaleDelivery):
         values = super(WebsiteSaleDelivery, self)._get_shop_payment_values(order, **kwargs)
 
         if values.get('delivery_has_stockable'):
-            values['periods'] = period_shipping
+            values['periods'] = order._fields['period_shipping']._description_selection(order.env)
 
         return values
 
