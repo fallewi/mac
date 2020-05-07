@@ -66,11 +66,17 @@ class WebsiteSale(WebsiteSale):
     @http.route()
     def shop(self, page=0, category=None, search='', ppg=False, **post):
         res = super(WebsiteSale, self).shop(page, category, search, ppg, **post)
-        for attribute in res.qcontext.get('attributes'):
-            found = False
-            for product in res.qcontext.get('products'):
-                if product.attribute_line_ids.search([('attribute_id', '=', attribute.id), ('product_tmpl_id', '=', product.id)]).value_ids:
-                    found = True
-            if not found:
-                res.qcontext['attributes'] -= attribute
+
+        domain = self._get_search_domain(search, category, res.qcontext.get('attrib_values'))
+        Product = request.env['product.template']
+        ProductAttributeline = request.env['product.attribute.line']
+        if res.qcontext.get('products'):
+            # get all products without limit
+            selected_products = Product.search(domain, limit=False)
+            attributes = ProductAttributeline.search([('product_tmpl_id', 'in', selected_products.ids),
+                                                      ('value_ids', '!=', False)]).mapped('attribute_id')
+        else:
+            attributes = res.qcontext.get('attributes')
+
+        res.qcontext['attributes'] = attributes
         return res
