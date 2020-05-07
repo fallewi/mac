@@ -74,7 +74,7 @@ class WebsiteSale(WebsiteSale):
             # get all products without limit
             selected_products = Product.search(domain, limit=False)
             attributes = ProductAttributeline.search([('product_tmpl_id', 'in', selected_products.ids),
-                                                      ('value_ids', '!=', False)]).mapped('attribute_id')
+                                                      ('value_ids', '!=', False)]).mapped('attribute_id').sorted(lambda r: (r.sequence, r.name))
         else:
             attributes = res.qcontext.get('attributes')
 
