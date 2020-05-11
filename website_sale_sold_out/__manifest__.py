@@ -10,6 +10,7 @@
     'author': 'Microcom',
     'depends': ['website_sale'],
     'data': [
+        'security/ir.model.access.csv',
         'views/templates.xml',
     ],
     'installable': True,
