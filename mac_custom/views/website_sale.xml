@@ -94,4 +94,15 @@
         </xpath>
     </template>
 
+    <template id="payment_extension" inherit_id="website_sale.payment" name="Payment extension">
+        <xpath expr="//thead/tr/th[hasclass('td-price')]" position="after">
+            <th class="text-center td-price">Ext</th>
+        </xpath>
+        <xpath expr="//tbody/tr/td[hasclass('td-price')]" position="after">
+            <td class="text-center td-extension" name="extension">
+                <span t-field="line.price_subtotal" style="white-space: nowrap;" t-options="{'widget': 'monetary', 'from_currency': website_sale_order.pricelist_id.currency_id, 'display_currency': website.currency_id}"/>
+            </td>
+        </xpath>
+    </template>
+
 </odoo>
