@@ -1,2 +1,2 @@
 # -*- coding: utf-8 -*-
-from . import create_lot
+from . import purchase_info

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+            <record id="purchase_order_line_info_view" model="ir.ui.view">
+            <field name="name">purchase.order.line.info.view</field>
+            <field name="model">purchase.order.line.info</field>
+            <field name="arch" type="xml">
+                <form create="false" edit="false">
+                    <group>
+                        <field name="order_line_id" invisible="1" readonly="1"/>
+                        <field name="product_id" readonly="1"/>
+                        <field name="qty_available" readonly="1"/>
+                        <field name="virtual_available" readonly="1"/>
+                        <field name="incoming_qty" readonly="1"/>
+                        <field name="outgoing_qty" readonly="1"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

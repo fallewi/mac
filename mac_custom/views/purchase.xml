@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="purchase_order_form" model="ir.ui.view">
+        <field name="name">mac_custom.purchase.order.form</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <field name="price_unit" position="after">
+                <field name="sale_price"/>
+                <field name="profit_percentage"/>
+                <button name="button_purchase_info" type="object" icon="fa-file-text-o"/>
+                <field name="available_in_pos"/>
+                <field name="website_published"/>
+            </field>
+        </field>
+    </record>
+</odoo>

@@ -10,9 +10,12 @@
     """,
     'depends': ['website_sale', 'ingredient_label', 'website_product_attribute_filter', 'website_sale_delivery'],
     'data': [
+        "security/ir.model.access.csv",
         "views/product.xml",
+        "views/purchase.xml",
         "views/sale.xml",
         "views/website_sale.xml",
+        "wizard/purchase_info.xml",
     ],
     'qweb': [],
     'installable': True,
